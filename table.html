@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table Generator</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Dynamic Table</h2>
+
+    <div id="table-container"></div>
+
+    <script>
+        function generateTable(rows, cols) {
+            const tableContainer = document.getElementById('table-container');
+            const table = document.createElement('table');
+
+            // Create table header
+            const header = table.insertRow();
+            for (let i = 0; i < cols; i++) {
+                const th = document.createElement('th');
+                th.textContent = `Header ${i + 1}`;
+                header.appendChild(th);
+            }
+
+            // Create table body (rows)
+            for (let i = 0; i < rows; i++) {
+                const tr = table.insertRow();
+                for (let j = 0; j < cols; j++) {
+                    const td = tr.insertCell();
+                    td.textContent = `Row ${i + 1}, Col ${j + 1}`;
+                }
+            }
+
+            // Append the table to the container
+            tableContainer.appendChild(table);
+        }
+
+        // Generate a table with 5 rows and 4 columns
+        generateTable(5, 4);
+    </script>
+    
+</body>
+</html>
